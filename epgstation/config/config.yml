@@ -1,0 +1,64 @@
+port: 8888
+mirakurunPath: http://mirakurun:40772/
+
+# dbtype: sqlite
+# sqlite:
+#   extensions:
+#     - '/hoge/regexp.dylib'
+#   regexp: true
+
+dbtype: mysql
+mysql:
+  host: mysql
+  port: 3306
+  user: epgstation
+  password: epgstation
+  database: epgstation
+  charset: utf8mb4
+
+epgUpdateIntervalTime: 10
+
+conflictPriority: 1
+recPriority: 2
+
+recordedFormat: "%YEAR%-%MONTH%-%DAY%_%TITLE%"
+recordedFileExtension: .ts
+
+thumbnail: "%ROOT%/thumbnail"
+thumbnailSize: 1920x1080
+thumbnailPosition: 30
+#ffmpeg: /usr/local/bin/ffmpeg
+#ffprobe: /usr/local/bin/ffprobe
+
+kodiHosts:
+    - name: kodi1
+      host: http://192.168.1.103:8080
+      user: tv
+      pass: kodi
+
+urlscheme:
+  m2ts:
+    ios: vlc-x-callback://x-callback-url/stream?url=PROTOCOL%3A%2F%2FADDRESS
+    android: intent://ADDRESS#Intent;action=android.intent.action.VIEW;type=video/*;scheme=PROTOCOL;end
+  video:
+    ios: infuse://x-callback-url/play?url=PROTOCOL%3A%2F%2FADDRESS
+    android: intent://ADDRESS#Intent;action=android.intent.action.VIEW;type=video/*;scheme=PROTOCOL;end
+  download:
+    ios: vlc-x-callback://x-callback-url/download?url=PROTOCOL%3A%2F%2FADDRESS&filename=FILENAME
+
+stream:
+  live:
+    ts:
+      m2ts:
+        - name: original
+
+encodeProcessNum: 8
+concurrentEncodeNum: 1
+encode:
+  - name: jlse
+    cmd: "%NODE% %ROOT%/config/jlse.js"
+    suffix: .mp4
+    rate: 4.0   
+
+apiServers:
+  - http://192.168.0.17:8888

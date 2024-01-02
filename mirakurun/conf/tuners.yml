@@ -1,0 +1,27 @@
+- name: PX-Q3U4_T1
+  types:
+    - GR
+  command: recpt1 --device /dev/px4video2 <channel> - -
+  decoder: arib-b25-stream-test
+  isDisabled: false
+
+- name: PX-Q3U4_T2
+  types:
+    - GR
+  command: recpt1 --device /dev/px4video3 <channel> - -
+  decoder: arib-b25-stream-test
+  isDisabled: false
+
+- name: PX-Q3U4_T3
+  types:
+    - GR
+  command: recpt1 --device /dev/px4video6 <channel> - -
+  decoder: arib-b25-stream-test
+  isDisabled: false
+
+- name: PX-Q3U4_T4
+  types:
+    - GR
+  command: recpt1 --device /dev/px4video7 <channel> - -
+  decoder: arib-b25-stream-test
+  isDisabled: false
