@@ -6,6 +6,14 @@
 - [EPGStationとjlse(CMカット)の連携](https://tobitti.net/blog/Ubuntu-EPGStation_v2-JoinLogoScpTrial/)
 - [jlse(CMカット)の依存関係](https://nyanonon.hatenablog.com/entry/20230502/1683007932)
 
+# MEMO
+## Docker Imageのビルドとghcr.ioへのプッシュ手順
+- GitHub -> Settings -> Developer settings -> Personal access tokens -> Token(classics)
+で`write:packages`にチェックをいれてtokenを生成する。
+
+- `$ docker login ghcr.io -u <USERNAME> -p <token>`でログインする。
+- `$ docker build . -t ghcr.io/eginoy/epgstation-qsv-jlse/epgstation-qsv-jlse:latest -f qsv.cmcut.Dockerfile --push`でビルドとプッシュを行う。
+
 # 追記ここまで
 
 # docker-mirakurun-epgstation
